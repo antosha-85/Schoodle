@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" 
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" defer></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+    <script src="/vendor/datepicker.js" defer></script>
+  
+  </head>
+  <header>
+    <%- include partials/_header %>
+  </header>
+  <body class="bg-light ">
+    <form p-3>
+        <div class="row">
+            <div class="col">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="col">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="date">Date</label>
+                <input type="text" name="name" id="date" class="form-control" placeholder="Date">
+            </div>
+            <div class="col">
+                <label for="time">Time</label>
+                <input type="text" id="email" name="time" class="form-control" placeholder="Time">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="location">Location</label>
+                <input type="text" name="Location" id="location" class="form-control" placeholder="Location">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Description">Description</label>
+                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Description of the event"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Invitees">Invitees</label>
+                <textarea name="invitees" id="invitees" class="form-control" rows="3" placeholder="Type the emails separated by a comma"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-danger float-right">Save</button>
+            </div>
+        </div>
+    </form>
+   </body>
+</html>
+
+

@@ -3,24 +3,37 @@
   <head>
     <title>Home Page</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <link href='/vendor/fullcalendar/packages/core/main.css' rel='stylesheet' />
-    <link href='/vendor/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-
-    <script src='/vendor/fullcalendar/packages/core/main.js'></script>
-    <script src='/vendor/fullcalendar/packages/daygrid/main.js'></script>
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/vendor/fullcalendar.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" 
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" defer></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+    <script src="/vendor/datepicker.js" defer></script>
+  
   </head>
-
-  <body>
-    <h1>Hello World!</h1>
-    <div id='calendar'></div>
-
+  <header>
+    <%- include partials/_header %>
+  </header>
+  <body class="bg-light ">
+    <div class="container-fluid bg-light text-justify p-3">
+       <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa ratione architecto quasi minus maxime nisi iusto nostrum modi illo corporis perferendis quas at itaque, reprehenderit in quis autem nulla deserunt totam quibusdam, repellat dolores, quod alias. Facilis tenetur reiciendis repellat nobis accusamus doloribus dignissimos temporibus consequuntur atque beatae veniam, deleniti ducimus illo quod possimus recusandae alias ipsa fugit molestias, quam ullam numquam. Quae cupiditate magni blanditiis itaque eos excepturi, maxime repudiandae, nostrum et ad porro iure aliquam voluptas molestias, expedita at non? Veritatis, veniam deserunt molestiae corrupti quo neque aliquid incidunt repellat dolore odio explicabo iusto! Natus ad iure sit doloremque deserunt sed ullam beatae dignissimos aut fuga, cum laboriosam ea eius! Fuga eligendi quas quam incidunt voluptatum dolore animi voluptates dicta laborum autem quo iure similique enim est, soluta perspiciatis ducimus expedita mollitia nobis libero quae placeat esse. Earum, assumenda. Officiis, impedit blanditiis aut saepe voluptas, voluptate magni sed itaque obcaecati iusto assumenda suscipit nihil facere pariatur adipisci veritatis, laborum corporis minus unde cumque. Vero quo voluptatibus voluptatum, odio recusandae veniam cupiditate dolores obcaecati harum esse repellendus quod facere sed provident impedit exercitationem, soluta sint voluptas omnis reiciendis a perspiciatis fuga commodi deleniti! Corrupti repellendus quos vitae facilis autem reprehenderit pariatur in. Quaerat necessitatibus illo temporibus voluptas sed veritatis excepturi labore, voluptate facilis cumque! Sit facere dolores, cupiditate aliquam recusandae magnam repellendus obcaecati, eveniet minima accusamus sapiente! Eos placeat libero deserunt inventore ut praesentium consectetur, vitae porro natus ab? Fuga optio dolor itaque numquam labore, suscipit sequi eum consequuntur sint nesciunt culpa doloremque odit iure accusamus quam, atque temporibus necessitatibus explicabo error natus, unde ducimus? Illo dolorum laboriosam quas modi ratione voluptatum, ex dignissimos expedita id maiores architecto officia iure debitis ea aliquam nesciunt similique rerum eius explicabo. Illo quibusdam aperiam illum iure, rerum odit veritatis deleniti ad eveniet.</p>
+    </div>
+    <!-- to include datepicker -->
+    <!-- <p>Date: <input type="text" id="datepicker"></p>  -->
+   
+   
   </body>
 </html>
