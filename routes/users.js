@@ -23,12 +23,6 @@ module.exports =
       });
   });
 
-  // router.get("/new", (req, res) => {
-  //   res.send('Hello user!')
-  //   return;
-  // });
-
-  //render whatever
   return router;
 };
 
