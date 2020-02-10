@@ -21,5 +21,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  //render whatever
   return router;
 };
