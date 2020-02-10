@@ -8,7 +8,8 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = 
+  (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
@@ -21,6 +22,15 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // router.get("/new", (req, res) => {
+  //   res.send('Hello user!')
+  //   return;
+  // });
+
   //render whatever
   return router;
 };
+
+// exports.getNewMeeting = 
+//render whatever

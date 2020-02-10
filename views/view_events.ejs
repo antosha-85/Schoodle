@@ -32,7 +32,7 @@
     <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Date</th>
+            <th scope="col">Date and time</th>
             <th scope="col">Title</th>
             <th scope="col">Attendees</th>
             <th scope="col">Action</th>
@@ -40,9 +40,9 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
+            <th scope="row"><%=date%> <%=time%></th>
+            <td><%= title %></td>
+            <td><%= name %></td>
             <td><button type="button" class="btn btn-dark">Edit</button></td>
           </tr>
           <tr>
@@ -62,7 +62,7 @@
     <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Date</th>
+            <th scope="col">Date and time</th>
             <th scope="col">Title</th>
             <th scope="col">Attendees</th>
             <th scope="col">Action</th>

@@ -7,28 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.js" 
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" defer></script>
-
+    
+    
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script> -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
-    <script src="/vendor/datepicker.js" defer></script>
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/timepicker.css" type="text/css" />
+
   
   </head>
   <header>
     <%- include partials/_header %>
   </header>
   <body class="bg-light ">
-    <form p-3>
+    <form method="POST" action="/api/v1.0/new" class="p-3">
         <div class="row">
             <div class="col">
                 <label for="name">Name</label>
@@ -48,17 +41,17 @@
         <div class="row">
             <div class="col">
                 <label for="date">Date</label>
-                <input type="text" name="name" id="date" class="form-control" placeholder="Date">
+                <input type="text" name="date" id="date" class="form-control" placeholder="Date">
             </div>
             <div class="col">
                 <label for="time">Time</label>
-                <input type="text" id="email" name="time" class="form-control" placeholder="Time">
+                <input type="text" id="time" name="time" class="form-control" placeholder="Time">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="location">Location</label>
-                <input type="text" name="Location" id="location" class="form-control" placeholder="Location">
+                <input type="text" name="location" id="location" class="form-control" placeholder="Location">
             </div>
         </div>
         <div class="row">
@@ -78,10 +71,22 @@
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-danger float-right">Save</button>
+                <button type="reset" class="btn btn-danger float-right">Reset</button>
             </div>
         </div>
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" 
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/vendor/datepicker.js"></script>
+    <script src="/vendor/timepicker.js"></script>
+
+    <script type="text/javascript" src="/scripts/app.js"></script>
    </body>
 </html>
 
