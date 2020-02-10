@@ -6,27 +6,29 @@ class RandomData {
                        'Madison', 'Art', 'George', 'Charles', 'Rita', 'Dianne', 'Lucy', 'Steve', 'Kim', 'Jacob', 'Mark'];
     this.lastName = ['Black', 'Smith', 'Goldberg', 'Dafoe', 'Macintosh', 'Gates', 'Jobs', 'Morrissete', 'Bond', 'Borham', 'Robertson', 'Park',
                      'Silva', 'Campos', 'Santos', 'Orlof','Lee', 'Stevenson', 'Murray', 'Lord', 'Gillan', 'Clark', 'Brown', 'Kubitz', 'Liu'];
-    this.provider = ['fake.com', 'wontwork.com', 'notreal.com', 'aol.com'];
+    this.provider = ['fake.com', 'wontwork.com', 'notreal.com', 'aol.com', 'icq.com'];
   }
 
-  getNewID( length = this.length ) {
+  getNewID(length = this.length) {
     const rangeLength = this.range.length - 1;
     let vShortStr = "";
 
     // loops for the length requested, selection randomly a char from the array to compose the ID
-    for (let i = 1; i <= length; i++){
-      vShortStr += this.range[Math.round(Math.random() * rangeLength) ];
+    for (let i = 1; i <= length; i++) {
+      vShortStr += this.range[Math.round(Math.random() * rangeLength)];
     }
     return vShortStr;
   }
 
-  getNewUser() {
+  getNewUser(pIndex = 0) {
     const userID = this.getNewID();
-    const fnLength = this.firstName.length -1;
-    const lnLength = this.lastName.length -1;
+    const fnLength = this.firstName.length - 1;
+    const lnLength = this.lastName.length - 1;
     const firstName = this.firstName[Math.round(Math.random() * fnLength) ];
     const lastName = this.lastName[Math.round(Math.random() * lnLength) ];
-    const email = firstName[0].toLowerCase() + lastName.toLowerCase() + "@" + this.provider[Math.round(Math.random() * this.provider.length-1)];
+    const email = pIndex === 0 ?
+      firstName[0].toLowerCase() + lastName.toLowerCase() + '@' + this.provider[Math.round(Math.random() * (this.provider.length - 1))]
+      : firstName[0].toLowerCase() + lastName.toLowerCase() + pIndex + '@' + this.provider[Math.round(Math.random() * (this.provider.length - 1))];
     return {id: userID, firstName: firstName, lastName: lastName, email: email};
   }
 
@@ -43,7 +45,7 @@ class RandomData {
 let qtUser = process.argv[2];
 let qtEvent = process.argv[3];
 
-if (!qtUser || !qtEvent){
+if (!qtUser || !qtEvent) {
   console.log("To use this script, provide the number of users and events to be created, i.e.:\n\nnode generateSeed.js 10 5\n\nwill generate 10 users and 5 events.\n")
 } else {
 
@@ -51,7 +53,7 @@ if (!qtUser || !qtEvent){
   const oData = new RandomData;
 
   for (let i = 1; i <= qtUser; i++) {
-    const newUser = oData.getNewUser();
+    const newUser = oData.getNewUser(i);
     console.log(`INSERT INTO users (id, username, name, email) VALUES(${i}, 'u${newUser.id}', '${newUser.firstName} ${newUser.lastName}', '${newUser.email}');`);
   }
 
