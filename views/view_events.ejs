@@ -41,31 +41,18 @@
           </tr>
         </thead>
         <tbody>
+          
+          <% for (const item of output) { %>
           <tr>
-            <th scope="row"><%=output.title%></th>
-            <td><%= output.location %></td>
-            <td><%= output.description %></td>
-            <td><%= output.qty_options %></td>
-            <td><%= output.qty_attendees %></td>
+            <th scope="row"><%=item.title%></th>
+            <td><%= item.location %></td>
+            <td><%= item.description %></td>
+            <td><%= item.qty_options %></td>
+            <td><%= item.qty_attendees %></td>
             <td><button type="button" class="btn btn-dark">Edit</button></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Thornton</td>
-            <td><button type="button" class="btn btn-dark">Edit</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry the Bird</td>
-            <td>Larry the Bird</td>
-            <td>Larry the Bird</td>
-            <td><button type="button" class="btn btn-dark">Edit</button></td>
-          </tr>
-        </tbody>
+        <% } %>
+         </tbody>
     </table>
     <h2>You're invited to</h2>
     <table class="table table-hover">

@@ -78,8 +78,9 @@ module.exports = (db) => {
 
       const output = pool.query(queryString, values)
         .then(result => {
-          const user = result.rows[0]
+          const user = result.rows
           res.render('view_events', {output: user})
+          console.log(user);
           return user;
         }).catch(err => console.error('query error', err.stack));
       // render data using template variables
