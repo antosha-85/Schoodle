@@ -1,20 +1,15 @@
-DROP DATABASE IF EXISTS schoodle;
+DROP VIEW IF EXISTS vw_events;
 DROP TABLE IF EXISTS attendee_options;
 DROP TABLE IF EXISTS attendees;
 DROP TABLE IF EXISTS event_options;
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS users;
 
-CREATE DATABASE schoodle;
-
-\c schoodle;
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  username CHAR(7) NOT NULL,
-  password VARCHAR(30) NULL
+  username CHAR(7) NOT NULL
 );
 
 CREATE TABLE events (
@@ -44,3 +39,22 @@ CREATE TABLE attendee_options (
   availability BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (id_attendee, id_option)
 );
+
+CREATE OR REPLACE VIEW vw_events AS
+  SELECT e.id AS id_event, e.url, e.title, e.location, e.description,
+  array_to_string(ARRAY( SELECT to_char(event_options.date_time, 'Mon-DD-YYYY at HH24:mi')
+  FROM event_options WHERE (event_options.id_event = e.id)), ', ') AS options,
+  count(DISTINCT a.id) AS qty_attendees, e.id_organizer, u.email
+  FROM users u
+  INNER JOIN events e ON u.id = e.id_organizer
+  LEFT JOIN attendees a ON e.id = a.id_event
+  GROUP BY u.id, e.id;
+
+ CREATE OR REPLACE VIEW vw_attendees AS
+  SELECT a.id, a.email, u.name, a.id_event, eo.date_time,
+  CASE ao.availability WHEN false THEN 'No' ELSE 'Yes'END AS available
+  FROM attendees a
+  LEFT JOIN attendee_options ao ON a.id = ao.id_attendee
+  LEFT JOIN event_options eo ON ao.id_option = eo.id
+  LEFT JOIN users u ON a.email = u.email
+  ORDER BY a.id_event, eo.date_time, a.email;
