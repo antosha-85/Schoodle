@@ -37,6 +37,11 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
+app.use(function (req, res, next) {
+  console.log('consolelogging just for check')
+  next();
+})
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");

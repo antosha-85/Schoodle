@@ -35,7 +35,7 @@
             <th scope="col">Title</th>
             <th scope="col">Location</th>
             <th scope="col">Description</th>
-            <th scope="col">Option(quantity)</th>
+            <th scope="col">Option</th>
             <th scope="col">Attendee(quantity)</th>
             <th scope="col">Action</th>
           </tr>
@@ -47,9 +47,9 @@
             <th scope="row"><%=item.title%></th>
             <td><%= item.location %></td>
             <td><%= item.description %></td>
-            <td><%= item.qty_options %></td>
+            <td><%= item.options %></td>
             <td><%= item.qty_attendees %></td>
-            <td><button type="button" class="btn btn-dark">Edit</button></td>
+            <td><a href="events/<%item.shortURL%>" class="btn btn-dark">Edit</a></td>
           </tr>
         <% } %>
          </tbody>
