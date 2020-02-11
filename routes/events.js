@@ -66,9 +66,23 @@ module.exports = (db) => {
         invitees: req.body.invitees
       };
 
-      
+      const queryString = `SELECT u.id, name, u.email, e.id id_event, title, location, description,
+      COUNT(DISTINCT eo.id) qt_options, COUNT(DISTINCT a.id) qty_attendees
+      FROM users u
+      INNER JOIN events e ON u.id = e.id_organizer
+      LEFT JOIN event_options eo ON e.id = eo.id_event
+      LEFT JOIN attendees a ON e.id = a.id_event
+      WHERE u.username= $1
+      GROUP BY u.id, e.id;`
+        const values = ['u6uFYob'];
+
+      const output = pool.query(queryString, values)
+        .then(result => {
+          const user = result.rows[0]
+          res.render('view_events', {output: user})
+          return user;
+        }).catch(err => console.error('query error', err.stack));
       // render data using template variables
-      res.render('view_events', templateVars)
       return;
 });
 
