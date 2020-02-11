@@ -67,7 +67,7 @@ module.exports = (db) => {
       };
 
       const queryString = `SELECT u.id, name, u.email, e.id id_event, title, location, description,
-      COUNT(DISTINCT eo.id) qt_options, COUNT(DISTINCT a.id) qty_attendees
+      COUNT(DISTINCT eo.id) qty_options, COUNT(DISTINCT a.id) qty_attendees
       FROM users u
       INNER JOIN events e ON u.id = e.id_organizer
       LEFT JOIN event_options eo ON e.id = eo.id_event
