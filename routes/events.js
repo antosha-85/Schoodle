@@ -47,15 +47,10 @@ module.exports = (db) => {
 
     //fetch from database 
 
-    const queryString = `SELECT name, e.id id_event, title, location, description,
-      array_to_string(array(select to_char(date_time, 'Mon-DD-YYYY at HH24:mi') from event_options where id_event = e.id),', ') "options",
-      COUNT(DISTINCT a.id) qty_attendees
-      FROM users u
-      INNER JOIN events e ON u.id = e.id_organizer
-      LEFT JOIN attendees a ON e.id = a.id_event
-      WHERE u.username = $1
-      GROUP BY u.id, e.id`
-    const values = ['u6uFYob'];
+    const queryString = `select id_event, title, location, description, options, qty_attendees, url, id_organizer
+    FROM vw_events
+    WHERE id_organizer = $1`
+    const values = ['1'];
 
     const output = pool.query(queryString, values)
       .then(result => {
