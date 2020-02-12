@@ -49,7 +49,8 @@
             <td><%= item.description %></td>
             <td><%= item.options %></td>
             <td><%= item.qty_attendees %></td>
-            <td><a href="/events/<%=item.id_event%>/edit" class="btn btn-dark">Edit</a></td>
+            <td><a href="/events/<%=item.id_event%>/edit" class="btn btn-dark">Edit</a><form class="form-inline" method="POST" action="/"><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+            </form></td>
           </tr>
         <% } %>
          </tbody>
