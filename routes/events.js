@@ -78,8 +78,8 @@ module.exports = (db) => {
         //creating a variable to save an array of objects
         const user = result.rows;
         req.session.user_id = user.name;
-        console.log(user);
-        console.log('reqparamsidevent', req.params.id_event)
+        // console.log(user);
+        // console.log('reqparamsidevent', req.params.id_event)
         res.render('view_events_edit', { output: user, id_event: req.params.id_event})
         return user;
       }).catch(err => console.error('query error', err.stack));
@@ -90,16 +90,20 @@ module.exports = (db) => {
   });
 
   router.post('/:id_event/edit', (req, res) => {
+    console.log('reqbody', req.body)
     const queryString = `UPDATE events
-    SET title = {3}, location = {4}, description = {5} 
-    WHERE id = {1} AND id_organizer = {2}`
+    SET title = $3, location = $4, description = $5 
+    WHERE id = $1 AND id_organizer = $2`;
+    
+    // console.log("TCL: req.body.id_organizer", req.body.id_organizer)
+    const values = [req.params.id_event, '1', req.body.title, req.body.location, req.body.description]
   const output = pool.query(queryString, values)
     .then(res => {
       // console.log('returning response', res.rows)
-      req.session.user_id = res.rows[0].id;
-      // console.log("TCL: req.session.user_id", req.session.user_id)
-      req.session.user_name = res.rows[0].name;
-      req.session.user_email = res.rows[0].email;
+      // req.session.user_id = res.rows[0].id;
+      // // console.log("TCL: req.session.user_id", req.session.user_id)
+      // req.session.user_name = res.rows[0].name;
+      // req.session.user_email = res.rows[0].email;
       return res;
     }).
     catch(err => console.error('query error', err.stack));

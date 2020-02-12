@@ -20,8 +20,9 @@
   <header>
     <%- include partials/_header %>
   </header>
+  <h1><%= id_event %></h1>
   <body class="bg-light ">
-    <form method="POST" action="/events" class="p-3">
+    <form method="POST" action="/events/<%= id_event %>/edit" class="p-3">
         <div class="row">
             <div class="col">
                 <label for="name">Name</label>
@@ -68,7 +69,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" method="POST" class="btn btn-primary">Save</button>
             </div>
             <div class="col">
                 <button type="reset" class="btn btn-danger float-right">Reset</button>
