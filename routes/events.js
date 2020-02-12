@@ -12,14 +12,14 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
-  router.get("/events/new", (req, res) => {
+  router.get("/new", (req, res) => {
     res.render('create')
     return;
   });
 
-  router.post("/events", (req, res) => {
+  router.post("/", (req, res) => {
     //insert into db
-    console.log('request', req.headers.cookie.split('sig=')[1])
+    console.log('request', req.headers.cookie.split('sig=')[1]) //cookies 
 
     const queryString = `INSERT INTO users (username, name, email) VALUES($1, $2, 
         $3) returning *;`
@@ -29,9 +29,9 @@ module.exports = (db) => {
 
     const output = pool.query(queryString, values)
       .then(res => {
-        console.log('returning response', res.rows)
+        // console.log('returning response', res.rows)
         req.session.user_id = res.rows[0].id;
-        console.log("TCL: req.session.user_id", req.session.user_id)
+        // console.log("TCL: req.session.user_id", req.session.user_id)
         req.session.user_name = res.rows[0].name;
         req.session.user_email = res.rows[0].email;
         return res;
@@ -39,11 +39,11 @@ module.exports = (db) => {
       catch(err => console.error('query error', err.stack));
 
     //redirect
-    res.redirect('/api/v1.0/events')
+    res.redirect('/events')
     return output
   })
 
-  router.get("/events", (req, res) => {
+  router.get("/", (req, res) => {
 
     //fetch from database 
 
@@ -63,25 +63,50 @@ module.exports = (db) => {
       }).catch(err => console.error('query error', err.stack));
     // console.log("TCL: output", output)
     // render data using template variables
-    
+
     return;
   });
 
-  router.get("/events/:shortURL", (req, res) => {
-    let templateVars = {
-      name: req.body.name,
-      email: req.body.email,
-      title: req.body.title,
-      date: req.body.date,
-      time: req.body.time,
-      location: req.body.location,
-      description: req.body.description,
-      invitees: req.body.invitees,
-      user: req.session.user_id,
-      shortURL: events.id
-    };
+  router.get("/:id_event/edit", (req, res) => {
+    const queryString = `select id_event, title, location, description, options, qty_attendees, url, id_organizer
+    FROM vw_events
+    WHERE id_event = $1`
+    const values = [req.params.id_event];
 
-    res.render('view_events', templateVars);
+    const output = pool.query(queryString, values)
+      .then(result => {
+        //creating a variable to save an array of objects
+        const user = result.rows;
+        req.session.user_id = user.name;
+        console.log(user);
+        console.log('reqparamsidevent', req.params.id_event)
+        res.render('view_events_edit', { output: user, id_event: req.params.id_event})
+        return user;
+      }).catch(err => console.error('query error', err.stack));
+    // console.log("TCL: output", output)
+    // render data using template variables
+
+    return;
+  });
+
+  router.post('/:id_event/edit', (req, res) => {
+    const queryString = `UPDATE events
+    SET title = {3}, location = {4}, description = {5} 
+    WHERE id = {1} AND id_organizer = {2}`
+  const output = pool.query(queryString, values)
+    .then(res => {
+      // console.log('returning response', res.rows)
+      req.session.user_id = res.rows[0].id;
+      // console.log("TCL: req.session.user_id", req.session.user_id)
+      req.session.user_name = res.rows[0].name;
+      req.session.user_email = res.rows[0].email;
+      return res;
+    }).
+    catch(err => console.error('query error', err.stack));
+
+  //redirect
+  res.redirect('/events')
+  return output
   });
 
   //render whatever

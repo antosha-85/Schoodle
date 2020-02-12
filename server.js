@@ -37,10 +37,10 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-app.use(function (req, res, next) {
-  console.log('consolelogging just for check')
-  next();
-})
+// app.use(function (req, res, next) {
+//   console.log('consolelogging just for check')
+//   next();
+// })
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -50,9 +50,9 @@ const events = require("./routes/events.js")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/v1.0/users", usersRoutes(db));
-app.use("/api/v1.0/widgets", widgetsRoutes(db));
-app.use("/api/v1.0", events(db))
+app.use("/users", usersRoutes(db));
+app.use("/widgets", widgetsRoutes(db));
+app.use("/events", events(db))
 // Note: mount other resources here, using the same pattern above
 
 
